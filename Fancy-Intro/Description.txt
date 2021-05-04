@@ -1,0 +1,79 @@
+This file is about the happenings in this file
+
+1.) We use the animation library gsap for the animation here
+2.) We have used two font families(Yes 2 font families can be combimed and pasted as a single link reference) - Heebo and Lobster2
+3.) We have created a main tag and used section with class landing that will have a nav tag which will have the logo(a h1 tag) and the unordered list of navlinks inside it
+4.) We have then created a div outside the main that is going to have the animations and stuff etc.
+5.) The div is name dwith a class .intro and inside it we have a .intro-text div that basically has all the text animations inside it
+6.) We are going to use the h1 tag named hide to hide the spans inside. The spans are going to pop out of h1 when we apply CSS
+7.) After the intro div we just insert a slider div and add nothing inside it. Then we do CSS
+8.) When we add the background to .landing it does not cover the whole screen but covers only the size equal to its own size.
+By adding background-size:cover; we can adjust it(the background) to cover the entire screen
+9.) Adding display:flex; to .nav-links puts the links(list items) side by side and adding list-style:none; removes the dots that was showing them as list items
+10.) In .big-text we could use text-align: center and add margin to perfectly center it, but the tezt will get centered relative to the viewport.
+So we use the position: absolute; and the top,left and transform properties(of 2-D transitions) to center it as it centers the text relative to the the parent of big-text which is the section tag.
+11.) We add color: rgb(61,61,61) so that ot blends with the background colour
+12.) To cover the image with the animation part (.intro) we add position:fixed; and make the top,left =0 and add add height and width to be 100% to stertch it over the entire screen(viewport)
+13.) We want to use the .slider to bring it up whenver we want to so after fixing it across the entire screen we use tranform: translateY(100%) to hide it.
+It moves the current element in space of its sibling within the same tag.eg: Here there is no sibling so the .slider just vanishes.
+In the case of the hidden text the property is applied to the the .hide spans so they are siblings. The 1st span takes the place of the 2nd span, the 2nd span of the 3rd span and 3rd span moves out of the div .intro-text.
+The overflow: hidden property in .hide hides all the text since each text has overflown or left its position 
+14.) We will be using timeline function of the gsap library. It allows us to chain multiple animations together.
+15.) To hide the text (that of .hide spans) we target .hide span and add the properties of tranform: translateY(100%) to shift the text by 100% downwards and display: inline-block;
+We add inline-block because span is an inline tag and the transitions like tranform do not apply to it. So we change it inline-block to make it applicable.
+16.) To hide the shifted texts we add overflow:hidden; to .hide 
+17.) the first t1.to in app.js is for the .text. It will animate the sequence of the spans.
+18.) The second t1.to in app.js is for .slider. It will animate the slider and move it upwards. After this animation we will again see the black screen with the .text content on it(This time no animation will be there)
+19.) The third t1.to in app.js is for the .intro which has all the content to be hidden. It will now be pushed above and hidden after the slider animation completes.
+20.) The fourth t1.to in app.js is for the nav tag. It will change its opacity from 0 to 1 making all the content inside this tag visible
+21.) The third t1.to in app.js is for the .big-text. It will show the text at the big font text at the same time the contents inside the navbar appear.
+
+TOPICS COVERED :-
+
+1.) gsap - https://cdnjs.com/libraries/gsap
+2.) GSAP is a JavaScript library for building high-performance animations that work in **every** major browser. Animate CSS, SVG, canvas, React, Vue, WebGL, colors, strings, motion paths, generic objects...anything JavaScript can touch!
+At its core, GSAP is a high-speed property manipulator, updating values over time with extreme accuracy. It's up to 20x faster than jQuery!
+3.) main tag - The <main> tag specifies the main content of a document. The content inside the <main> element should be unique to the document. 
+It should not contain any content that is repeated across documents such as sidebars, navigation links, copyright information, site logos, and search forms.
+NOTE: There must not be more than one <main> element in a document. The <main> element must NOT be a descendant of an <article>, <aside>, <footer>, <header>, or <nav> element.
+4.) section tag vs div - https://bitsofco.de/sectioning-content-in-html5/
+Semantic HTML - https://www.lifewire.com/why-use-semantic-html-3468271
+5.) background-size - https://www.w3schools.com/csSref/css3_pr_background-size.asp
+background - https://www.w3schools.com/csSref/css3_pr_background.asp
+6.) list-style - https://www.w3schools.com/cssref/pr_list-style.asp
+7.) Transform property - https://www.w3schools.com/Css/css3_2dtransforms.asp
+8.) position: fixed - A fixed position element is positioned relative to the viewport, or the browser window itself.
+The viewport doesn’t change when the window is scrolled, so a fixed positioned element will stay right where it is when the page is scrolled.
+We can use the properties left,right,top,bottom with this fixed as well
+9.) Difference among the positions with explainations - https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/
+10.) Tranform in 3D - https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function
+11.) translateY() - The value in the brackets moves the object it is being applied downwards by the value.
+12.) translateX() - ALong the positive X-axis, the object is moved
+13.) TimelineMax extends the timeline function of the gsap library.This means it has the Timeline library plus more functions. Here we use Timeline.
+While initialising we need to define defaults - .timeline({defaults:{property}}); eg: gsap.timeline({defaults:{ease:"power1.out"}}) 
+Rest it has the same parameters as the TimelineMax.
+eg :
+The format is : timeline.to("object to be grabbed(identified by class name or id",duration in seconds,{property to be applied})
+NOTE: The duration in seconds is the upper limit for the animation. In simple words itna time khatam hone ke andar andar ye animation laagu krdo poori tarah se. If we scroll fast the time finishes that quickly. 
+The format for scheduling 2 different animations to 2 different objects is timeline.to(1st animation).to(2nd animation)
+timeline.to('.text',5,{x:500}).to(".content-images",2,{opacity:0});
+We can do n animation sin this manner
+
+To schedule the animations at the same time then put a coma and write the -ve value of the duration of the firsts animation. The value in this coma will start the animation the value seconds before the first animation gets over
+timeline.to('.text',2,{x:500}).to(".content-images",2,{opacity:0},"-=2");
+
+To do a from-to animation
+We include animation in the to property section 
+timeline.fromTo('.text',{opacity:0},{opacity:1,duration:3})
+
+14.) More on Timeline - https://greensock.com/docs/v3/GSAP/Timeline
+GSAP has default values for properties like ease ("power1.out") and duration (0.5 seconds). 
+15.) Adding a stagger to a multi-target tween basically offsets the starting time of each target's animation
+In simple words it tells that after this value of the stagger to animate the other object
+16.) All tweens(animations) recognize a stagger property which can be a number, an object, or a function
+A value of stagger: 0.1 would cause there to be 0.1 second between the start times of each tween. A negative value would do the same but backwards so that the last element begins first.
+17.) For more on Stagger - https://greensock.com/docs/v3/Staggers
+18.) The difference between stagger and delay is that stagger is used for animated sequences while delay is used for normal animations
+eg: Here 3 h1 tags have the .text class and we want to animate them as a sequence so we use stagger fot them in app.js 
+The .slider class is for a single div and no sequence animation is possible so we use delay.
+19.) 
