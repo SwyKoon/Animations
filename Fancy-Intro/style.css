@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    font-family: 'Heebo', sans-serif;
+}
+
+.landing{
+    min-height: 100vh;
+    background: url("./doobtaBanda.jpg");
+    background-size: cover;
+    padding: 0rem 5rem;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 10vh;
+}
+
+.nav-links{
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li{
+    padding-left: 5rem;
+    font-size: 1.2rem;
+}
+
+#logo{
+    font-weight: lighter;
+    font-size: 2rem;
+}
+
+.big-text{
+    font-family: 'Lobster Two', cursive;
+    font-size: 4rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-30%);
+    color: rgb(61,61,61);
+}
+
+.intro{
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-text{
+    color: rgb(233,233,233);
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.5rem;
+}
+
+.hide{
+    overflow: hidden;
+}
+
+.hide span{
+    display: inline-block;
+    transform: translateY(100%);
+    
+}
+
+.slider{
+    background: rgb(69, 109, 128);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateY(100%);
+}
